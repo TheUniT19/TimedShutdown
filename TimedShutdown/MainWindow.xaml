@@ -1,0 +1,14 @@
+﻿<Window x:Class="TimedShutdown.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TimedShutdown"
+        mc:Ignorable="d"
+        Title="Shutdown on the fly" Height="134.655" Width="188.902">
+    <Grid Margin="10,0,2,1">
+        <Button Content="Schedule" HorizontalAlignment="Left" Margin="82,16,0,0" VerticalAlignment="Top" Click="Time" Height="34" Width="59"/>
+        <Button Content="Cancel" Margin="5,53,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="136" Click="Cancel" Height="29"/>
+        <TextBox HorizontalAlignment="Left" Name="Input" Margin="5,16,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="34" FontSize="20"/>
+    </Grid>
+</Window>
