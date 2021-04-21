@@ -15,26 +15,27 @@ namespace TimedShutdown
         }
         private void Time(object sender, RoutedEventArgs e)
         {
-            var success = DateTime.TryParse(Input.Text, out var time);
+            var success = float.TryParse(Input.Text, out var hours);
             if (success)
             {
                 Process.Start("cmd.exe", "/C shutdown -a");
-                if (DateTime.Now > time)
-                {
-                    time = time.AddDays(1);
-                }
-                var totalSeconds = (float)(time - DateTime.Now).TotalSeconds;
-                var roundedSeconds = totalSeconds.ToString("#");
-                Process.Start("cmd.exe", $"/C shutdown -s -t {roundedSeconds}");
+                var timespan = TimeSpan.FromHours(hours);
+                Process.Start("cmd.exe", $"/C shutdown -s -t {timespan.TotalSeconds}");
             }
+
             else
             {
-                success = float.TryParse(Input.Text, out var hours);
+                success = DateTime.TryParse(Input.Text, out var time);
                 if (success)
                 {
                     Process.Start("cmd.exe", "/C shutdown -a");
-                    var timespan = TimeSpan.FromHours(hours);
-                    Process.Start("cmd.exe", $"/C shutdown -s -t {timespan.TotalSeconds}");
+                    if (DateTime.Now > time)
+                    {
+                        time = time.AddDays(1);
+                    }
+                    var totalSeconds = (float)(time - DateTime.Now).TotalSeconds;
+                    var roundedSeconds = totalSeconds.ToString("#");
+                    Process.Start("cmd.exe", $"/C shutdown -s -t {roundedSeconds}");
                 }
             }
         }
