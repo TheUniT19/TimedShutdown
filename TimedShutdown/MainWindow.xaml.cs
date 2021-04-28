@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Windows;
+using System.Windows.Threading;
 
 namespace TimedShutdown
 {
@@ -20,7 +21,11 @@ namespace TimedShutdown
             {
                 Process.Start("cmd.exe", "/C shutdown -a");
                 var timespan = TimeSpan.FromHours(hours);
-                Process.Start("cmd.exe", $"/C shutdown -s -t {timespan.TotalSeconds}");
+
+                DelayAction(500, new Action(() => 
+                {
+                    Process.Start("cmd.exe", $"/C shutdown -s -t {timespan.TotalSeconds}");
+                }));
             }
 
             else
@@ -35,13 +40,30 @@ namespace TimedShutdown
                     }
                     var totalSeconds = (float)(time - DateTime.Now).TotalSeconds;
                     var roundedSeconds = totalSeconds.ToString("#");
-                    Process.Start("cmd.exe", $"/C shutdown -s -t {roundedSeconds}");
+                    DelayAction(500, new Action(() =>
+                    {
+                        Process.Start("cmd.exe", $"/C shutdown -s -t {roundedSeconds}");
+                    }));
                 }
             }
         }
         private void Cancel(object sender, RoutedEventArgs e)
         {
             Process.Start("cmd.exe", "/C shutdown -a");
+        }
+
+        private static void DelayAction(int millisecond, Action action)
+        {
+            var timer = new DispatcherTimer();
+            timer.Tick += delegate
+
+            {
+                action.Invoke();
+                timer.Stop();
+            };
+
+            timer.Interval = TimeSpan.FromMilliseconds(millisecond);
+            timer.Start();
         }
     }
 }
