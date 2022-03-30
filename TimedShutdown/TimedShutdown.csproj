@@ -123,5 +123,11 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="power-off-solid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="moon-solid.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -5,10 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TimedShutdown"
         mc:Ignorable="d"
-        Title="Shutdown on the fly" Height="134.655" Width="188.902">
+        Title="Easy Scheduler" Height="134.655" Width="190.902" ResizeMode="NoResize">
     <Grid Margin="10,0,2,1">
-        <Button Content="Schedule" HorizontalAlignment="Left" Margin="82,16,0,0" VerticalAlignment="Top" Click="Time" Height="34" Width="59"/>
-        <Button Content="Cancel" Margin="5,53,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="136" Click="Cancel" Height="29"/>
-        <TextBox HorizontalAlignment="Left" Name="Input" Margin="5,16,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="34" FontSize="20"/>
+        <Button HorizontalAlignment="Left" Margin="76,16,0,0" VerticalAlignment="Top" Click="Shutdown" Height="34" Width="34">
+            <StackPanel>
+                <Image Source="power-off-solid.png" RenderTransformOrigin="0.5,0.5">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="0.75" ScaleY="0.75"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+            </StackPanel>
+        </Button>
+        <Button HorizontalAlignment="Left" Margin="115,16,0,0" VerticalAlignment="Top" Click="Hibernate" Height="34" Width="34">
+            <StackPanel>
+                <Image Source="moon-solid.png" RenderTransformOrigin="0.5,0.5">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="0.75" ScaleY="0.75"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+            </StackPanel>
+        </Button>
+        <Button Content="Cancel" Margin="5,53,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="144" Click="Cancel" Height="29"/>
+        <TextBox HorizontalAlignment="Left" Name="Input" Margin="5,16,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="66" Height="34" FontSize="20"/>
     </Grid>
 </Window>
